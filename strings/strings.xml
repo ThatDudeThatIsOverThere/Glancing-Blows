@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+	<string name="option_header_GB">Glancing Blows</string>
+	<string name="option_label_GB">Glancing Blows</string>
+	<string name="option_val_GB_enabled">Enabled</string>
+	<string name="option_val_GB_disabled">Disabled</string>
+	
+</root>
