@@ -7,7 +7,7 @@ Adds functionality for the Glancing Blows house rule.
 Rules as Written: If an attack roll is equal to or greater than a target's AC, the attack is a hit.
 Glancing Blows: If an attack roll is greater than a target's AC, the attack is a hit. But if the attack roll *exactly* equals the target's AC, the attack is instead a glancing blow, which means that it does half-damage.
 
-In order to make use of the Glancing Blows houserule, the option must be turned on in the Options menu in your campaign.
+In order to make use of the Glancing Blows houserule, the option must be turned on in the Options menu in your campaign. (It is, for your convenience, enabled by default.)
 
 ![Screenshot of the button for Glancing Blows](https://github.com/ThatDudeThatIsOverThere/File-Holder/blob/main/Readme-Images/Glancing%20Blows%20option.png)
 
