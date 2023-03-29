@@ -20,6 +20,8 @@ This makes a certain amount of sense, but doesn't jive with 5e's existing syntax
 - [PARTIALLY IMMUNE] When being hit with an attack that does more than one type of damage, the target is immune to at least one damage type, but not all of them.
 - [PARTIALLY VULNERABLE] When being hit with an attack that does more than one type of damage, the target is vulnerable to at least one damage type, but not all of them.
 
+Currently not supported: Damage absorption is a Thing in 5e, but the [ABSORBED] and [PARTIALLY ABSORBED] tags are currently used in Fantasy Grounds to reflect that damage has been dealt to Temporary HP rather than HP. Given the rarity of damage absorption in 5e--and how hard it would be to change those tags to something else for the purposes of displaying absorption--we have decided to leave that alone for now.
+
 ## Installation
 
 [Download the Glancing-Blows.ext file](https://github.com/ThatDudeThatIsOverThere/Glancing-Blows/releases) and place it in the extensions folder in the Fantasy Grounds Unity game folder.
