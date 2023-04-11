@@ -30,7 +30,7 @@ Icons made by Payungkead from www.flaticon.com
     <properties>
         <name>Feature: Glancing Blows v1.0.3</name>
         <version>v1.0.3</version>
-		<loadorder>250</loadorder> 
+		<loadorder>250</loadorder>
         <author>Kael-the-Adventurer-ThatDudeOverThere-and-jeremyguebert</author>
 		<description>Adding functionality for the Glancing Blows houserule.</description>
 
@@ -42,17 +42,16 @@ Icons made by Payungkead from www.flaticon.com
     <base>
 		<!-- xml files -->
 		<includefile source="graphics/icons.xml" />
-		
+
 		<!-- strings -->
 		<includefile source="strings/strings.xml" />
-		
+
 		<script name="ActionDamageGB" file="scripts/manager_action_damage_gb.lua"/>
 		<script name="ActionAttackGB" file="scripts/manager_action_attack_gb.lua"/>
 		<script name="OptionsGB" file="scripts/data_options_gb.lua"/>
 		<script name="ManagerActionsGB" file="scripts/manager_actions_gb.lua"/>
-		
+
     </base>
 
     <announcement text="Glancing Blows v1.0.3 by Kael the Adventurer, ThatDudeOverThere, and jeremyguebert." icon="GB_icon" font="emotefont" />
-	
 </root>
