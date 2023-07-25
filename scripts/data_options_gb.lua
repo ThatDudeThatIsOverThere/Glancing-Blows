@@ -5,7 +5,7 @@
 
 function onInit()
 
-	OptionsManager.registerOption2("GLBL", true, "option_header_GB", "option_label_GB", "option_entry_cycler", 
+	OptionsManager.registerOption2("GLBL", false, "option_header_GB", "option_label_GB", "option_entry_cycler", 
 		{ labels="option_val_GB_enabled", values="GlancingBlows", baselabel="option_val_GB_disabled", baseval="", default="" });
 		
 end
