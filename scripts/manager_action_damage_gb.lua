@@ -67,11 +67,11 @@ function applyDamage(rSource, rTarget, rRoll)
 				end
 			end
 			if (rGB.nDamageTypeCount == rGB.nResistCount) then
-					rRoll.sDesc = rRoll.sDesc .. '[RESISTED]';
-				end
-				if ((rGB.nDamageTypeCount > rGB.nResistCount) and (rGB.nResistCount > 0)) then
-					rRoll.sDesc = rRoll.sDesc .. '[PARTIALLY RESISTED]';
-				end
+				rRoll.sDesc = rRoll.sDesc .. '[RESISTED]';
+			end
+			if ((rGB.nDamageTypeCount > rGB.nResistCount) and (rGB.nResistCount > 0)) then
+				rRoll.sDesc = rRoll.sDesc .. '[PARTIALLY RESISTED]';
+			end
 		end
 		
 		if bVulnerable then
