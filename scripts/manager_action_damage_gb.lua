@@ -56,31 +56,32 @@ function applyDamage(rSource, rTarget, rRoll)
             rRoll.sDesc = rRoll.sDesc .. '[GLANCING BLOW]';
         end
 		
+		--Adding some code to update the damage display tags in the chat window so that they conform to 5e conventions
         if bResist then
-
-        if rGB.bImmune then
-            if (nAdjustedDamage <= 0) then
-                rRoll.sDesc = rRoll.sDesc .. '[IMMUNE]';
-            end
-            if ((rGB.nDamageTypeCount > rGB.nImmuneCount) and (rGB.nImmuneCount > 0)) then
-                rRoll.sDesc = rRoll.sDesc .. '[PARTIALLY IMMUNE]';
-            end
-        end
-            if (rGB.nDamageTypeCount == rGB.nResistCount) then
-                rRoll.sDesc = rRoll.sDesc .. '[RESISTED]';
-            end
-            if ((rGB.nDamageTypeCount > rGB.nResistCount) and (rGB.nResistCount > 0)) then
-                rRoll.sDesc = rRoll.sDesc .. '[PARTIALLY RESISTED]';
-            end
-        end
-        if bVulnerable then
-            if (rGB.nDamageTypeCount == rGB.nVulnerableCount) then
-                rRoll.sDesc = rRoll.sDesc .. '[VULNERABLE]';
-            end
-            if ((rGB.nDamageTypeCount > rGB.nVulnerableCount) and (rGB.nVulnerableCount > 0)) then
-                rRoll.sDesc = rRoll.sDesc .. '[PARTIALLY VULNERABLE]';
-            end
-        end
+			if rGB.bImmune then
+				if (nAdjustedDamage <= 0) then
+					rRoll.sDesc = rRoll.sDesc .. '[IMMUNE]';
+				end
+				if ((rGB.nDamageTypeCount > rGB.nImmuneCount) and (rGB.nImmuneCount > 0)) then
+					rRoll.sDesc = rRoll.sDesc .. '[PARTIALLY IMMUNE]';
+				end
+			end
+			if (rGB.nDamageTypeCount == rGB.nResistCount) then
+					rRoll.sDesc = rRoll.sDesc .. '[RESISTED]';
+				end
+				if ((rGB.nDamageTypeCount > rGB.nResistCount) and (rGB.nResistCount > 0)) then
+					rRoll.sDesc = rRoll.sDesc .. '[PARTIALLY RESISTED]';
+				end
+		end
+		
+		if bVulnerable then
+			if (rGB.nDamageTypeCount == rGB.nVulnerableCount) then
+				rRoll.sDesc = rRoll.sDesc .. '[VULNERABLE]';
+			end
+			if ((rGB.nDamageTypeCount > rGB.nVulnerableCount) and (rGB.nVulnerableCount > 0)) then
+				rRoll.sDesc = rRoll.sDesc .. '[PARTIALLY VULNERABLE]';
+			end
+		end	
     end
 
     EffectManager.startDelayedUpdates();
