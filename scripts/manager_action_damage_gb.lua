@@ -78,6 +78,7 @@ function applyDamage(rSource, rTarget, rRoll)
 		if ((rGB.nDamageTypeCount > rGB.nVulnerableCount) and (rGB.nVulnerableCount > 0)) then
 			rRoll.sDesc = rRoll.sDesc .. '[PARTIALLY VULNERABLE]';
 		end
+	end
 
     EffectManager.startDelayedUpdates();
 
