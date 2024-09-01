@@ -57,32 +57,28 @@ function applyDamage(rSource, rTarget, rRoll)
         end
 		
 		--Adding some code to update the damage display tags in the chat window so that they conform to 5e conventions
-        if bResist then
-			if rGB.bImmune then
-				if (nAdjustedDamage <= 0) then
-					rRoll.sDesc = rRoll.sDesc .. '[IMMUNE]';
-				end
-				if ((rGB.nDamageTypeCount > rGB.nImmuneCount) and (rGB.nImmuneCount > 0)) then
-					rRoll.sDesc = rRoll.sDesc .. '[PARTIALLY IMMUNE]';
-				end
-			end
-			if (rGB.nDamageTypeCount == rGB.nResistCount) then
-				rRoll.sDesc = rRoll.sDesc .. '[RESISTED]';
-			end
-			if ((rGB.nDamageTypeCount > rGB.nResistCount) and (rGB.nResistCount > 0)) then
-				rRoll.sDesc = rRoll.sDesc .. '[PARTIALLY RESISTED]';
-			end
+		if (rGB.nDamageTypeCount == rGB.nImmuneCount) then
+			rRoll.sDesc = rRoll.sDesc .. '[IMMUNE]';
 		end
-		
-		if bVulnerable then
-			if (rGB.nDamageTypeCount == rGB.nVulnerableCount) then
-				rRoll.sDesc = rRoll.sDesc .. '[VULNERABLE]';
-			end
-			if ((rGB.nDamageTypeCount > rGB.nVulnerableCount) and (rGB.nVulnerableCount > 0)) then
-				rRoll.sDesc = rRoll.sDesc .. '[PARTIALLY VULNERABLE]';
-			end
-		end	
-    end
+		if ((rGB.nDamageTypeCount > rGB.nImmuneCount) and (rGB.nImmuneCount > 0)) then
+			rRoll.sDesc = rRoll.sDesc .. '[PARTIALLY IMMUNE]';
+		end
+
+		if (rGB.nDamageTypeCount == rGB.nResistCount) then
+			rRoll.sDesc = rRoll.sDesc .. '[RESISTED]';
+		end
+		if ((rGB.nDamageTypeCount > rGB.nResistCount) and (rGB.nResistCount > 0)) then
+			rRoll.sDesc = rRoll.sDesc .. '[PARTIALLY RESISTED]';
+		end
+
+
+		if (rGB.nDamageTypeCount == rGB.nVulnerableCount) then
+			rRoll.sDesc = rRoll.sDesc .. '[VULNERABLE]';
+		end
+		if ((rGB.nDamageTypeCount > rGB.nVulnerableCount) and (rGB.nVulnerableCount > 0)) then
+			rRoll.sDesc = rRoll.sDesc .. '[PARTIALLY VULNERABLE]';
+		end
+	end
 
     EffectManager.startDelayedUpdates();
 
@@ -101,6 +97,11 @@ function applyDamage(rSource, rTarget, rRoll)
         local otherTags = '';
         local _, tagIndex = string.find(rRoll.sDesc, '%[GLANCING BLOW%]');
         otherTags = string.sub(rRoll.sDesc, tagIndex + 1);
+		local _, preTagIndex = string.find(rRoll.sDesc, '.*%)%]');
+		local preTags = '';
+		if (preTagIndex) then
+			preTags = string.sub(rRoll.sDesc, preTagIndex + 1, tagIndex);
+		end
 
         for sDamageType, sDamageDice, sDamageSubTotal in string.gmatch(rRoll.sDesc, '%[TYPE: ([^(]*) %(([%d%+%-dD]+)%=(%d+)%)%]') do
             if (((countOddDamageValues % 2) == 1) and ((tonumber(sDamageSubTotal) % 2) == 1)) then
@@ -116,7 +117,7 @@ function applyDamage(rSource, rTarget, rRoll)
             sNewDesc = sNewDesc .. ' ' .. '[TYPE: ' .. sDamageType .. '(' .. sDamageDice .. ' halved =' .. tostring(sNewDamageSubTotal) .. ')]'; -- not sure if this tostring should stay. Currently nothing bad happens if nil, was breaking for me without it when nil even though it exists on 98 and 100
         end
 
-        sNewDesc = sNewDesc .. ' ' .. '[GLANCING BLOW]' .. otherTags;
+        sNewDesc = sNewDesc .. ' ' .. '[GLANCING BLOW]' .. otherTags .. preTags;
 
         rRoll.sDesc = sNewDesc;
     end
