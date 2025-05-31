@@ -28,8 +28,8 @@ Icons made by Payungkead from www.flaticon.com and modified by Kael the Adventur
 
 <root release = "1.0" version = "1">
     <properties>
-        <name>Feature: Glancing Blows v1.1.1</name>
-        <version>v1.1.1</version>
+        <name>Feature: Glancing Blows v1.1.2</name>
+        <version>v1.1.2</version>
 		<loadorder>250</loadorder> 
         <author>Kael-the-Adventurer-ThatDudeOverThere-and-jeremyguebert</author>
 		<description>Adding functionality for the Glancing Blows houserule.</description>
@@ -53,6 +53,6 @@ Icons made by Payungkead from www.flaticon.com and modified by Kael the Adventur
 		
     </base>
 
-    <announcement text="Glancing Blows v1.1.1 by Kael the Adventurer, ThatDudeOverThere, and jeremyguebert." icon="GB_icon" font="emotefont" />
+    <announcement text="Glancing Blows v1.1.2 by Kael the Adventurer, ThatDudeOverThere, and jeremyguebert." icon="GB_icon" font="emotefont" />
 	
 </root>
