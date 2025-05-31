@@ -28,7 +28,12 @@ function setupModRoll(rRoll, rSource, rTarget)
 end
 
 function applyDamage(rSource, rTarget, rRoll)
-    local sTargetNodeType, nodeTarget = ActorManager.getTypeAndNode(rTarget);
+    local nodeTarget;
+	if ActorManager.isPC(rTarget) then
+		nodeTarget = ActorManager.getCreatureNode(rTarget);
+	else
+		nodeTarget = ActorManager.getCTNode(rTarget);
+	end
     local nAdjustedDamage = 0;
     if not nodeTarget then
         return;
@@ -148,9 +153,9 @@ function getDamageAdjust(rSource, rTarget, nDamage, rDamageOutput)
         end
 
         -- Handle standard immunity, vulnerability and resistance
-        local bLocalVulnerable = ActionDamage.checkReductionType(aVuln, aSrcDmgClauseTypes);
-        local bLocalResist = ActionDamage.checkReductionType(aResist, aSrcDmgClauseTypes);
-        local bLocalImmune = ActionDamage.checkReductionType(aImmune, aSrcDmgClauseTypes);
+        local bLocalVulnerable = ActionDamage.checkBasicReductionType(aVuln, aSrcDmgClauseTypes);
+        local bLocalResist = ActionDamage.checkBasicReductionType(aResist, aSrcDmgClauseTypes);
+        local bLocalImmune = ActionDamage.checkBasicReductionType(aImmune, aSrcDmgClauseTypes);
 
         -- Calculate adjustment
         -- Vulnerability = double
@@ -162,12 +167,12 @@ function getDamageAdjust(rSource, rTarget, nDamage, rDamageOutput)
             rGB.nImmuneCount = rGB.nImmuneCount + 1;
         else
             -- Handle numerical resistance
-            local nLocalResist = ActionDamage.checkNumericalReductionType(aResist, aSrcDmgClauseTypes, v);
+            local nLocalResist = ActionDamage.checkNumericReductionType(aResist, aSrcDmgClauseTypes, v);
             if nLocalResist ~= 0 then
                 rGB.nResistCount = rGB.nResistCount + 1;
             end
             -- Handle numerical vulnerability
-            local nLocalVulnerable = ActionDamage.checkNumericalReductionType(aVuln, aSrcDmgClauseTypes);
+            local nLocalVulnerable = ActionDamage.checkNumericReductionType(aVuln, aSrcDmgClauseTypes);
             if nLocalVulnerable ~= 0 then
                 rGB.nVulnerableCount = rGB.nVulnerableCount + 1;
             end
